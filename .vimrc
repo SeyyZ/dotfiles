@@ -72,7 +72,8 @@ let NERDTreeQuitOnOpen=1 "Quit NERDTree when open file
 set background=dark
 set termguicolors
 colorscheme onedark
-let g:airline_theme='onedark'
+let g:airline_theme='bubblegum'
+let g:airline_section_z = "%p%% : %l/%L : Col:%c"
 "-----
 
 "split navigations
@@ -85,10 +86,10 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <F3> :call RunCode()<CR>
 function RunCode()
     if &ft == 'c'
-    w !gcc -Wall -Wextra -Werror -std=c99 -O1 -o main *.c && ./main && rm ./main
+    w !make && ./main
     " w !make && make run
-  elseif &ft == 'python3'
-    w !python %:p
+  elseif &ft == 'python'
+    w !python3 %:p
   elseif &ft == "cs"
     w !dotnet run
   else
@@ -118,3 +119,6 @@ function Completion()
         inoremap if<Space> if ()<Left>
         inoremap if<Tab> if ()<Left>
     endfunction
+set vb
+set belloff=all
+Plugin 'wakatime/vim-wakatime'
