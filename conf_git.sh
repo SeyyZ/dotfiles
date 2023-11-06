@@ -7,7 +7,7 @@ else
 fi
 
 
-mv .vimrc ~/
+ln -s ~/dotfiles/.vimrc ~/.vimrc -f
 
 echo '----------------------vimrc set-----------------------'
 
